@@ -1,44 +1,87 @@
+# Warehouse Automation Simulation
 
-# Reliability Analysis of a Block Diagram
+## Project Overview
 
-## Overview
-This repository contains reliability calculations for a given block diagram using two methods:
-- **Decomposition Method**
-- **Enumeration Method**
+The Warehouse Automation Simulation project models an advanced automated manufacturing system using discrete-event simulation in Python. This system integrates multiple subsystems, including a Manufacturing Preparation Center (MPC), an Automated Guided Vehicle (AGV) fleet, and a Work Center. The objective is to evaluate system performance, optimize throughput, and analyze different system configurations.
 
-## Problem Statement
-We analyze a block diagram where each component has a given reliability, and we determine the system's overall reliability using probabilistic techniques.
+## System Components
 
-## Reliability Calculation
-The system consists of five components with the following reliability values:
-- **R1 = 0.8**
-- **R2 = 0.9**
-- **R3 = 0.8**
-- **R4 = 0.9**
-- **R5 = 0.9**
+1. **Manufacturing Preparation Center (MPC)**
+   - Operators process raw materials into fixtures.
+   - A joint buffer stores prepared fixtures before transportation.
+   - Workstations facilitate operator efficiency.
 
-### Case I: Component 4 Fails
-- Probability of failure = **1 - R4 = 0.1**
-- **R_I = R1 * R2 * R3 = (0.8) * (0.9) * (0.8) = 0.576**
+2. **Automated Guided Vehicles (AGV) Fleet**
+   - AGVs transport fixtures between the MPC and the Work Center.
+   - Dynamic task allocation minimizes idle time and optimizes flow.
+   - Battery management ensures continuous operation.
 
-### Case II: Component 4 Does Not Fail
-- Probability = **R4 = 0.9**
-- **R_II = 1 - [(1 - R2 * R3) * (1 - R5)]**
-  - **= 1 - [(1 - (0.9 * 0.8)) * (1 - 0.9)]**
-  - **= 0.972**
-- Final system reliability:
-  - **R_sys = (1 - R4) * R_I + R4 * R_II**
-  - **= (0.1 * 0.576) + (0.9 * 0.972) = 0.9324**
+3. **Work Center**
+   - Milling machines process fixtures.
+   - Internal buffers store fixtures before and after processing.
+   - A robotic system transfers fixtures between buffers and the loading dock.
 
-## Results
-The system reliability is **0.9324** using the decomposition method.
+## Objectives
 
-## Usage
-To reproduce the calculations, follow these steps:
-1. Review the block diagram structure.
-2. Apply probability rules to determine parallel and series system reliability.
-3. Use the formulas above to compute the final reliability.
+- Develop modular simulation models for each subsystem.
+- Validate simulation results using analytical methods.
+- Investigate alternative system configurations to improve efficiency.
 
-## References
-- Ebeling, *An Introduction to Reliability and Maintainability Engineering*, 3rd ed.
-- Reliability engineering principles and probability theory.
+## Simulation Scenarios
+
+### 1. **Baseline System Performance**
+   - Evaluate throughput and flow time using the default configuration.
+   - Identify potential bottlenecks in material flow and machine utilization.
+
+### 2. **AGV Fleet Optimization**
+   - Implement dynamic AGV selection based on workload.
+   - Model battery recharging behavior and its impact on system performance.
+
+### 3. **Operator and Shift Management**
+   - Simulate operator shift breaks and bio breaks to understand their impact.
+   - Compare different staffing levels and break schedules.
+
+### 4. **System Configuration Variations**
+   - Analyze the impact of increasing the number of machines, AGVs, and workstations.
+   - Optimize buffer sizes for reduced wait times and improved efficiency.
+
+## Implementation Details
+
+- **Simulation Framework:** Python with SimPy for discrete-event simulation.
+- **Key Metrics:** Throughput, flow time, machine utilization, AGV efficiency.
+- **Validation Approach:** Analytical modeling and multi-run simulation comparisons.
+
+## Running the Simulation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/warehouse-automation.git
+   ```
+2. Install dependencies:
+   ```sh
+   pip install -r requirements.txt
+   ```
+3. Run the main simulation script:
+   ```sh
+   python simulation.py
+   ```
+4. View results and analysis in the generated reports.
+
+## Future Enhancements
+
+- Introduce traffic congestion modeling for AGVs.
+- Implement machine failures and maintenance schedules.
+- Develop a real-time dashboard for visualization.
+
+## Contributors
+- Álvaro Arrieta Puente
+- Vasileios Karvouniaris
+- Milly Landmeter
+- Ioanna Panagiotopoulou
+- Kars Polderman
+- Paulo Vieira
+
+ ```
+```
+ 
+
