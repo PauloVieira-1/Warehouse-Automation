@@ -55,7 +55,7 @@ The Warehouse Automation Simulation project models an advanced automated manufac
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/your-repo/warehouse-automation.git
+   git clone https://github.com/Warehouse-Automation/warehouse-automation.git
    ```
 2. Install dependencies:
    ```sh
